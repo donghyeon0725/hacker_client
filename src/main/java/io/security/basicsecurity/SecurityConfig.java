@@ -152,7 +152,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     httpServletResponse.sendRedirect("/denied");
                 });
 
-        //http.csrf().disable();
+        http.csrf().disable();
 
     }
 }

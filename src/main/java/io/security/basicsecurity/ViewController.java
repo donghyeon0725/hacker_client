@@ -19,11 +19,11 @@ import java.util.Map;
 @Controller
 public class ViewController {
 
-    @GetMapping("/test")
+    /*@GetMapping("/test")
     public String get(HttpServletRequest request, Model model) {
 
         model.addAttribute("_csrf", ((CsrfToken) request.getAttribute(CsrfToken.class.getName())).getToken());
 
         return "test";
-    }
+    }*/
 }
